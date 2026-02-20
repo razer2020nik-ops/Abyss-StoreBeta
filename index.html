@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abyss Store - Премиум софт</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>ABYSS - Приватный чит для PUBG Mobile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,474 +14,832 @@
 
         body {
             font-family: 'Rajdhani', sans-serif;
-            background: #000;
+            background: #0a0a0a;
             color: #fff;
             overflow-x: hidden;
         }
 
-        /* Animated Background */
-        body::before {
-            content: '';
+        /* Background */
+        .bg-video {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            z-index: -2;
             background: 
-                radial-gradient(circle at 20% 30%, rgba(0, 150, 255, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(100, 50, 200, 0.15) 0%, transparent 50%);
+                radial-gradient(circle at 30% 20%, rgba(0, 255, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 70% 80%, rgba(0, 100, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+                #000;
+        }
+
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
             z-index: -1;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 30px;
         }
 
         /* Navigation */
         nav {
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(10px);
             padding: 20px 0;
             position: sticky;
             top: 0;
-            z-index: 100;
-            border-bottom: 2px solid #0066ff;
+            z-index: 1000;
+            border-bottom: 3px solid #00ffff;
+            box-shadow: 0 5px 30px rgba(0, 255, 255, 0.3);
         }
 
-        .nav-container {
+        .nav-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 30px;
         }
 
         .logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 32px;
-            font-weight: 900;
-            background: linear-gradient(135deg, #0066ff, #00ccff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-family: 'Russo One', sans-serif;
+            font-size: 36px;
+            color: #00ffff;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+            letter-spacing: 3px;
         }
 
-        .nav-links {
+        .status {
             display: flex;
-            gap: 40px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #00ccff;
-        }
-
-        .nav-btn {
-            background: linear-gradient(135deg, #0066ff, #00ccff);
-            color: #fff;
-            padding: 12px 30px;
+            align-items: center;
+            gap: 15px;
+            background: rgba(0, 255, 0, 0.1);
+            padding: 12px 25px;
             border-radius: 25px;
-            text-decoration: none;
+            border: 2px solid #00ff00;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            background: #00ff00;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 10px #00ff00;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .status-text {
+            font-size: 18px;
             font-weight: 700;
-            transition: transform 0.3s, box-shadow 0.3s;
+            color: #00ff00;
         }
 
-        .nav-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.5);
-        }
-
-        /* Hero Section */
+        /* Hero */
         .hero {
-            min-height: 90vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             text-align: center;
-            padding: 80px 0;
+            padding: 100px 0 80px;
+            position: relative;
         }
 
-        .hero h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 72px;
-            font-weight: 900;
-            margin-bottom: 30px;
-            background: linear-gradient(135deg, #fff, #00ccff);
+        .hero-content h1 {
+            font-family: 'Russo One', sans-serif;
+            font-size: 80px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #00ffff, #0066ff, #8a2be2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
+            text-shadow: 0 0 40px rgba(0, 255, 255, 0.5);
+            letter-spacing: 5px;
+            animation: titleGlow 3s ease-in-out infinite;
         }
 
-        .hero p {
-            font-size: 24px;
+        @keyframes titleGlow {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.5)); }
+            50% { filter: drop-shadow(0 0 40px rgba(0, 255, 255, 0.8)); }
+        }
+
+        .hero-subtitle {
+            font-size: 32px;
+            color: #00ffff;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .hero-desc {
+            font-size: 22px;
             color: #aaa;
             margin-bottom: 50px;
-            max-width: 700px;
+            line-height: 1.6;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        .hero-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #0066ff, #00ccff);
-            color: #fff;
-            padding: 20px 60px;
-            font-size: 20px;
-            font-weight: 700;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s;
-            box-shadow: 0 10px 40px rgba(0, 102, 255, 0.4);
+        .cta-buttons {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
-        .hero-btn:hover {
+        .btn {
+            padding: 20px 50px;
+            font-size: 20px;
+            font-weight: 700;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00ffff, #0066ff);
+            color: #000;
+            box-shadow: 0 10px 40px rgba(0, 255, 255, 0.5);
+        }
+
+        .btn-primary:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 50px rgba(0, 204, 255, 0.6);
+            box-shadow: 0 15px 50px rgba(0, 255, 255, 0.7);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #00ffff;
+            border: 3px solid #00ffff;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
         }
 
         /* Features */
         .features {
             padding: 100px 0;
+            background: rgba(0, 20, 40, 0.3);
         }
 
         .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 48px;
+            font-family: 'Russo One', sans-serif;
+            font-size: 56px;
             text-align: center;
             margin-bottom: 70px;
-            color: #00ccff;
+            color: #00ffff;
+            text-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 40px;
         }
 
-        .feature-box {
-            background: rgba(0, 20, 40, 0.5);
-            border: 2px solid #0066ff;
+        .feature-card {
+            background: rgba(0, 30, 60, 0.6);
+            border: 2px solid #00ffff;
             border-radius: 20px;
             padding: 40px;
-            transition: all 0.3s;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
         }
 
-        .feature-box:hover {
-            transform: translateY(-10px);
-            border-color: #00ccff;
-            box-shadow: 0 20px 50px rgba(0, 102, 255, 0.3);
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s;
+        }
+
+        .feature-card:hover::before {
+            top: -100%;
+            left: -100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 255, 255, 0.4);
+            border-color: #0066ff;
         }
 
         .feature-icon {
             font-size: 60px;
             margin-bottom: 20px;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
         }
 
-        .feature-box h3 {
-            font-family: 'Orbitron', sans-serif;
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .feature-card h3 {
+            font-family: 'Russo One', sans-serif;
             font-size: 28px;
+            color: #00ffff;
             margin-bottom: 15px;
-            color: #00ccff;
         }
 
-        .feature-box p {
+        .feature-card p {
             font-size: 18px;
-            color: #aaa;
-            line-height: 1.6;
+            color: #bbb;
+            line-height: 1.8;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .feature-list li {
+            padding: 10px 0;
+            color: #ddd;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        .feature-list li:hover {
+            color: #00ffff;
+            padding-left: 10px;
+        }
+
+        .feature-list li::before {
+            content: '→ ';
+            color: #00ffff;
+            font-weight: bold;
+            margin-right: 10px;
         }
 
         /* Pricing */
         .pricing {
             padding: 100px 0;
-            background: rgba(0, 10, 20, 0.5);
         }
 
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-            max-width: 1100px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
         .price-card {
-            background: rgba(0, 20, 40, 0.7);
-            border: 2px solid #0066ff;
-            border-radius: 25px;
-            padding: 50px 30px;
+            background: linear-gradient(135deg, rgba(0, 30, 60, 0.8), rgba(0, 20, 40, 0.8));
+            border: 3px solid #00ffff;
+            border-radius: 20px;
+            padding: 40px 30px;
             text-align: center;
-            transition: all 0.3s;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(138, 43, 226, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .price-card:hover::before {
+            opacity: 1;
         }
 
         .price-card:hover {
-            transform: scale(1.05);
-            border-color: #00ccff;
-            box-shadow: 0 20px 60px rgba(0, 102, 255, 0.4);
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 25px 60px rgba(0, 255, 255, 0.5);
+            border-color: #8a2be2;
         }
 
         .price-card.featured {
-            border-color: #00ccff;
-            transform: scale(1.08);
-            box-shadow: 0 20px 60px rgba(0, 204, 255, 0.5);
+            border-color: #ffd700;
+            transform: scale(1.05);
         }
 
-        .price-icon {
-            font-size: 70px;
-            margin-bottom: 20px;
+        .price-card.featured::after {
+            content: '🔥 ПОПУЛЯРНЫЙ';
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            color: #000;
+            padding: 5px 40px;
+            font-weight: 700;
+            font-size: 14px;
+            transform: rotate(45deg);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.5);
         }
 
-        .price-card h3 {
-            font-family: 'Orbitron', sans-serif;
+        .price-duration {
+            font-family: 'Russo One', sans-serif;
             font-size: 32px;
+            color: #00ffff;
             margin-bottom: 20px;
-            color: #00ccff;
         }
 
-        .price {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 56px;
-            font-weight: 900;
+        .price-amount {
+            font-family: 'Russo One', sans-serif;
+            font-size: 48px;
             color: #fff;
-            margin: 30px 0;
+            margin: 20px 0;
         }
 
-        .price span {
-            font-size: 24px;
-            color: #aaa;
+        .price-amount span {
+            font-size: 28px;
+            color: #00ffff;
         }
 
-        .features-list {
+        .price-features {
             list-style: none;
             margin: 30px 0;
             text-align: left;
         }
 
-        .features-list li {
+        .price-features li {
             padding: 12px 0;
-            font-size: 18px;
-            color: #bbb;
-            border-bottom: 1px solid rgba(0, 102, 255, 0.2);
+            font-size: 16px;
+            color: #ddd;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
         }
 
-        .features-list li::before {
+        .price-features li::before {
             content: '✓ ';
-            color: #00ccff;
+            color: #00ff00;
             font-weight: bold;
+            font-size: 20px;
             margin-right: 10px;
         }
 
-        .buy-btn {
-            display: block;
-            background: linear-gradient(135deg, #0066ff, #00ccff);
-            color: #fff;
-            padding: 18px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 18px;
-            margin-top: 30px;
+        .price-btn {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        /* Info Section */
+        .info-section {
+            padding: 100px 0;
+            background: rgba(0, 20, 40, 0.3);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .info-card {
+            background: rgba(0, 30, 60, 0.6);
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
             transition: all 0.3s;
         }
 
-        .buy-btn:hover {
-            box-shadow: 0 10px 30px rgba(0, 204, 255, 0.5);
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 255, 255, 0.3);
+        }
+
+        .info-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .info-card h3 {
+            font-family: 'Russo One', sans-serif;
+            font-size: 22px;
+            color: #00ffff;
+            margin-bottom: 10px;
+        }
+
+        .info-card p {
+            color: #bbb;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 100px 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: rgba(0, 30, 60, 0.6);
+            border: 2px solid #00ffff;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 255, 255, 0.4);
+        }
+
+        .contact-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .contact-card h3 {
+            font-family: 'Russo One', sans-serif;
+            font-size: 24px;
+            color: #00ffff;
+            margin-bottom: 15px;
+        }
+
+        .contact-link {
+            display: inline-block;
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 12px 30px;
+            background: rgba(0, 255, 255, 0.1);
+            border-radius: 10px;
+            margin-top: 15px;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .contact-link:hover {
+            background: rgba(0, 255, 255, 0.3);
+            color: #00ffff;
+            border-color: #00ffff;
         }
 
         /* Footer */
         footer {
-            background: rgba(0, 0, 0, 0.95);
-            padding: 60px 0 30px;
-            border-top: 2px solid #0066ff;
-        }
-
-        .footer-content {
+            background: #000;
+            padding: 40px 0;
+            border-top: 3px solid #00ffff;
             text-align: center;
         }
 
         .footer-logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 36px;
-            font-weight: 900;
-            background: linear-gradient(135deg, #0066ff, #00ccff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-family: 'Russo One', sans-serif;
+            font-size: 32px;
+            color: #00ffff;
             margin-bottom: 20px;
         }
 
-        .footer-content p {
-            color: #888;
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
-
-        .social-link {
-            display: inline-block;
-            background: #0066ff;
-            color: #fff;
-            padding: 15px 40px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 18px;
-            margin: 10px;
-            transition: all 0.3s;
-        }
-
-        .social-link:hover {
-            background: #00ccff;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 204, 255, 0.5);
-        }
-
-        .copyright {
-            margin-top: 50px;
-            color: #555;
-            font-size: 14px;
+        footer p {
+            color: #777;
+            font-size: 16px;
+            margin: 10px 0;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+            .hero-content h1 {
+                font-size: 48px;
             }
 
-            .hero h1 {
-                font-size: 42px;
-            }
-
-            .hero p {
-                font-size: 18px;
+            .hero-subtitle {
+                font-size: 24px;
             }
 
             .section-title {
                 font-size: 36px;
             }
 
-            .pricing-grid,
-            .features-grid {
+            .features-grid,
+            .contact-grid,
+            .pricing-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .price-card.featured {
+                transform: scale(1);
+            }
+
+            .btn {
+                padding: 15px 30px;
+                font-size: 18px;
             }
         }
     </style>
 </head>
 <body>
+    <div class="bg-video"></div>
+    <div class="grid-overlay"></div>
+
     <!-- Navigation -->
     <nav>
-        <div class="nav-container">
-            <div class="logo">ABYSS STORE</div>
-            <ul class="nav-links">
-                <li><a href="#home">Главная</a></li>
-                <li><a href="#features">Возможности</a></li>
-                <li><a href="#pricing">Цены</a></li>
-            </ul>
-            <a href="https://t.me/abysshacks" class="nav-btn" target="_blank">Telegram</a>
+        <div class="nav-content">
+            <div class="logo">💧 ABYSS</div>
+            <div class="status">
+                <div class="status-dot"></div>
+                <span class="status-text">НЕ ОБНАРУЖЕН 🟢</span>
+            </div>
         </div>
     </nav>
 
     <!-- Hero -->
-    <section class="hero" id="home">
+    <section class="hero">
         <div class="container">
-            <h1>ABYSS STORE</h1>
-            <p>Профессиональные решения для достижения максимальных результатов</p>
-            <a href="https://t.me/abysshacks" class="hero-btn" target="_blank">Купить сейчас</a>
+            <div class="hero-content">
+                <h1>ABYSS</h1>
+                <div class="hero-subtitle">Приватный чит для PUBG Mobile</div>
+                <p class="hero-desc">Профессиональный инструмент для доминирования на поле боя.<br>Полный функционал. Максимальная безопасность. Регулярные обновления.</p>
+                <div class="cta-buttons">
+                    <a href="https://t.me/AbyssHacksBot" class="btn btn-primary" target="_blank">🤖 Купить сейчас</a>
+                    <a href="https://t.me/abysshacks" class="btn btn-secondary" target="_blank">📱 Telegram</a>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Features -->
-    <section class="features" id="features">
+    <section class="features">
         <div class="container">
-            <h2 class="section-title">Наши преимущества</h2>
+            <h2 class="section-title">Что внутри?</h2>
             <div class="features-grid">
-                <div class="feature-box">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Высокая скорость</h3>
-                    <p>Мгновенная работа и максимальная производительность системы</p>
-                </div>
-                <div class="feature-box">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Безопасность</h3>
-                    <p>Полная защита и конфиденциальность ваших данных</p>
-                </div>
-                <div class="feature-box">
+                <div class="feature-card">
                     <div class="feature-icon">🎯</div>
-                    <h3>Точность</h3>
-                    <p>Максимально точные результаты работы</p>
+                    <h3>Aimbot Pro</h3>
+                    <p>Профессиональный прицеливание с гибкими настройками</p>
+                    <ul class="feature-list">
+                        <li>Настройка плавности прицеливания</li>
+                        <li>Выбор зоны поражения (голова, тело)</li>
+                        <li>Настраиваемый FOV</li>
+                        <li>Автошот при наведении</li>
+                    </ul>
                 </div>
-                <div class="feature-box">
-                    <div class="feature-icon">🔄</div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">👁️</div>
+                    <h3>ESP Wallhack</h3>
+                    <p>Видение всего на карте через стены</p>
+                    <ul class="feature-list">
+                        <li>ESP на всех игроков</li>
+                        <li>Лут и оружие</li>
+                        <li>Транспорт и техника</li>
+                        <li>Расстояние и здоровье</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>Misc функции</h3>
+                    <p>Дополнительные настройки для удобства</p>
+                    <ul class="feature-list">
+                        <li>Мини-радар на экране</li>
+                        <li>Кастомный прицел</li>
+                        <li>No Recoil (без отдачи)</li>
+                        <li>Speed Hack опции</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section">
+        <div class="container">
+            <h2 class="section-title">Преимущества ABYSS</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">🛡️</div>
+                    <h3>Безопасность</h3>
+                    <p>Статус: Не обнаружен. Регулярные обновления защиты</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">📱</div>
+                    <h3>БЕЗ Root</h3>
+                    <p>Работает на всех Android устройствах без Root прав</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">⚡</div>
+                    <h3>Быстрая установка</h3>
+                    <p>Установка за 2 минуты, простая инструкция</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">🔄</div>
                     <h3>Обновления</h3>
-                    <p>Регулярные апдейты и новые функции</p>
+                    <p>Актуальные обновления под новые версии игры</p>
                 </div>
-                <div class="feature-box">
-                    <div class="feature-icon">💎</div>
-                    <h3>Премиум качество</h3>
-                    <p>Профессиональная разработка высочайшего уровня</p>
-                </div>
-                <div class="feature-box">
-                    <div class="feature-icon">💬</div>
+
+                <div class="info-card">
+                    <div class="info-icon">💬</div>
                     <h3>Поддержка 24/7</h3>
-                    <p>Всегда на связи для решения ваших вопросов</p>
+                    <p>Быстрая техподдержка в любое время</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">🎮</div>
+                    <h3>Все версии PUBGM</h3>
+                    <p>Поддержка Global, KR, VN и других версий</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing -->
-    <section class="pricing" id="pricing">
+    <section class="pricing">
         <div class="container">
-            <h2 class="section-title">Выберите свой план</h2>
+            <h2 class="section-title">Тарифы и цены</h2>
             <div class="pricing-grid">
                 <div class="price-card">
-                    <div class="price-icon">🌟</div>
-                    <h3>Starter</h3>
-                    <div class="price">$29<span>/мес</span></div>
-                    <ul class="features-list">
-                        <li>Базовый функционал</li>
-                        <li>Обновления 1 месяц</li>
+                    <div class="price-duration">1 День</div>
+                    <div class="price-amount">180 <span>₽</span></div>
+                    <ul class="price-features">
+                        <li>Полный доступ</li>
+                        <li>Все функции</li>
                         <li>Техподдержка</li>
-                        <li>Инструкции</li>
                     </ul>
-                    <a href="https://t.me/abysshacks" class="buy-btn" target="_blank">Купить</a>
+                    <a href="https://t.me/AbyssHacksBot" class="btn btn-primary price-btn" target="_blank">Купить</a>
+                </div>
+
+                <div class="price-card">
+                    <div class="price-duration">3 Дня</div>
+                    <div class="price-amount">380 <span>₽</span></div>
+                    <ul class="price-features">
+                        <li>Полный доступ</li>
+                        <li>Все функции</li>
+                        <li>Техподдержка</li>
+                        <li>Экономия 12%</li>
+                    </ul>
+                    <a href="https://t.me/AbyssHacksBot" class="btn btn-primary price-btn" target="_blank">Купить</a>
                 </div>
 
                 <div class="price-card featured">
-                    <div class="price-icon">💎</div>
-                    <h3>Premium</h3>
-                    <div class="price">$59<span>/мес</span></div>
-                    <ul class="features-list">
-                        <li>Полный функционал</li>
-                        <li>Обновления 3 месяца</li>
-                        <li>VIP поддержка</li>
-                        <li>Эксклюзивные функции</li>
-                        <li>Персональная настройка</li>
+                    <div class="price-duration">7 Дней</div>
+                    <div class="price-amount">700 <span>₽</span></div>
+                    <ul class="price-features">
+                        <li>Полный доступ</li>
+                        <li>Все функции</li>
+                        <li>Приоритет поддержки</li>
+                        <li>Экономия 20%</li>
                     </ul>
-                    <a href="https://t.me/abysshacks" class="buy-btn" target="_blank">Купить</a>
+                    <a href="https://t.me/AbyssHacksBot" class="btn btn-primary price-btn" target="_blank">Купить</a>
                 </div>
 
                 <div class="price-card">
-                    <div class="price-icon">👑</div>
-                    <h3>Ultimate</h3>
-                    <div class="price">$99<span>/мес</span></div>
-                    <ul class="features-list">
-                        <li>Все функции + эксклюзив</li>
-                        <li>Пожизненные обновления</li>
-                        <li>Персональный менеджер</li>
-                        <li>Кастомная разработка</li>
-                        <li>Все будущие продукты</li>
-                        <li>VIP статус</li>
+                    <div class="price-duration">14 Дней</div>
+                    <div class="price-amount">1 000 <span>₽</span></div>
+                    <ul class="price-features">
+                        <li>Полный доступ</li>
+                        <li>Все функции</li>
+                        <li>Приоритет поддержки</li>
+                        <li>Экономия 30%</li>
                     </ul>
-                    <a href="https://t.me/abysshacks" class="buy-btn" target="_blank">Купить</a>
+                    <a href="https://t.me/AbyssHacksBot" class="btn btn-primary price-btn" target="_blank">Купить</a>
+                </div>
+
+                <div class="price-card">
+                    <div class="price-duration">30 Дней</div>
+                    <div class="price-amount">1 500 <span>₽</span></div>
+                    <ul class="price-features">
+                        <li>Полный доступ</li>
+                        <li>Все функции</li>
+                        <li>VIP поддержка</li>
+                        <li>Экономия 45%</li>
+                        <li>Бонусы в Discord</li>
+                    </ul>
+                    <a href="https://t.me/AbyssHacksBot" class="btn btn-primary price-btn" target="_blank">Купить</a>
+                </div>
+
+                <div class="price-card">
+                    <div class="price-duration">60 Дней</div>
+                    <div class="price-amount">2 000 <span>₽</span></div>
+                    <ul class="price-features">
+                        <li>Полный доступ</li>
+                        <li>Все функции</li>
+                        <li>VIP поддержка</li>
+                        <li>Экономия 60%</li>
+                        <li>Все бонусы</li>
+                        <li>Ранний доступ к новинкам</li>
+                    </ul>
+                    <a href="https://t.me/AbyssHacksBot" class="btn btn-primary price-btn" target="_blank">Купить</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-title">Контакты и поддержка</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">🤖</div>
+                    <h3>Купить</h3>
+                    <p>Автоматическая покупка через бота</p>
+                    <a href="https://t.me/AbyssHacksBot" class="contact-link" target="_blank">@AbyssHacksBot</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">📢</div>
+                    <h3>Новости</h3>
+                    <p>Обновления и новости проекта</p>
+                    <a href="https://t.me/abysshacks" class="contact-link" target="_blank">@abysshacks</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">💬</div>
+                    <h3>Чат</h3>
+                    <p>Общение с другими пользователями</p>
+                    <a href="https://t.me/abysshackschat" class="contact-link" target="_blank">@abysshackschat</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">🎮</div>
+                    <h3>Discord</h3>
+                    <p>Discord сервер проекта</p>
+                    <a href="https://discord.gg/RgMNArJw2J" class="contact-link" target="_blank">Присоединиться</a>
                 </div>
             </div>
         </div>
@@ -490,12 +848,10 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <h3 class="footer-logo">ABYSS STORE</h3>
-                <p>Свяжитесь с нами для получения дополнительной информации</p>
-                <a href="https://t.me/abysshacks" class="social-link" target="_blank">📱 Telegram</a>
-                <p class="copyright">© 2024 Abyss Store. Все права защищены.</p>
-            </div>
+            <div class="footer-logo">💧 ABYSS</div>
+            <p>© 2024 Abyss Hacks. Приватный чит для PUBG Mobile</p>
+            <p style="margin-top: 10px; font-size: 14px;">Используйте на свой страх и риск. Мы не несем ответственности за блокировки аккаунтов.</p>
+            <p style="margin-top: 15px; font-size: 13px; color: #555;">Все торговые марки являются собственностью соответствующих владельцев.</p>
         </div>
     </footer>
 </body>
