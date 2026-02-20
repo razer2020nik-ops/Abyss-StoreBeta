@@ -3,856 +3,582 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABYSS - Приватный чит для PUBG Mobile</title>
-    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>ABYSS — Private PUBG Mobile Cheat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --cyan: #00ffea;
+            --dark: #0a0a0a;
+            --gray: #141416;
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
         }
 
         body {
-            font-family: 'Rajdhani', sans-serif;
-            background: #0a0a0a;
-            color: #fff;
+            background: var(--dark);
+            color: #e0e0e0;
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden;
-        }
-
-        /* Background */
-        .bg-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            background: 
-                radial-gradient(circle at 30% 20%, rgba(0, 255, 255, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 70% 80%, rgba(0, 100, 255, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
-                #000;
-        }
-
-        .grid-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            z-index: -1;
-            animation: gridMove 20s linear infinite;
-        }
-
-        @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 30px;
         }
 
         /* Navigation */
         nav {
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 20px 0;
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid #1f1f1f;
             z-index: 1000;
-            border-bottom: 3px solid #00ffff;
-            box-shadow: 0 5px 30px rgba(0, 255, 255, 0.3);
-        }
-
-        .nav-content {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 30px;
+            justify-content: space-between;
+            padding: 0 5%;
         }
 
         .logo {
-            font-family: 'Russo One', sans-serif;
-            font-size: 36px;
-            color: #00ffff;
-            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--cyan);
             letter-spacing: 3px;
         }
 
-        .status {
+        .status-badge {
+            background: rgba(0, 255, 100, 0.12);
+            color: #00ff6a;
+            padding: 10px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 15px;
+            border: 1px solid rgba(0, 255, 100, 0.3);
             display: flex;
             align-items: center;
-            gap: 15px;
-            background: rgba(0, 255, 0, 0.1);
-            padding: 12px 25px;
-            border-radius: 25px;
-            border: 2px solid #00ff00;
+            gap: 8px;
         }
 
         .status-dot {
-            width: 12px;
-            height: 12px;
-            background: #00ff00;
+            width: 8px;
+            height: 8px;
+            background: #00ff6a;
             border-radius: 50%;
             animation: pulse 2s infinite;
-            box-shadow: 0 0 10px #00ff00;
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
         }
 
-        .status-text {
-            font-size: 18px;
-            font-weight: 700;
-            color: #00ff00;
-        }
-
-        /* Hero */
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 100px 0 80px;
-            position: relative;
+            padding: 120px 5% 80px;
+            background: radial-gradient(circle at 50% 30%, rgba(0, 255, 234, 0.06), transparent 60%);
         }
 
-        .hero-content h1 {
-            font-family: 'Russo One', sans-serif;
-            font-size: 80px;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #00ffff, #0066ff, #8a2be2);
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 96px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00ffea, #0099ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 40px rgba(0, 255, 255, 0.5);
-            letter-spacing: 5px;
-            animation: titleGlow 3s ease-in-out infinite;
-        }
-
-        @keyframes titleGlow {
-            0%, 100% { filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.5)); }
-            50% { filter: drop-shadow(0 0 40px rgba(0, 255, 255, 0.8)); }
+            margin-bottom: 20px;
+            line-height: 1.1;
         }
 
         .hero-subtitle {
-            font-size: 32px;
-            color: #00ffff;
-            margin-bottom: 30px;
-            font-weight: 700;
-        }
-
-        .hero-desc {
-            font-size: 22px;
-            color: #aaa;
-            margin-bottom: 50px;
-            line-height: 1.6;
-            max-width: 800px;
+            font-size: 26px;
+            color: #999;
+            margin: 25px 0 50px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
 
         .cta-buttons {
             display: flex;
-            gap: 30px;
+            gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
+            margin-top: 40px;
         }
 
         .btn {
-            padding: 20px 50px;
-            font-size: 20px;
+            padding: 18px 45px;
+            font-size: 17px;
             font-weight: 700;
-            border-radius: 10px;
+            border-radius: 12px;
             text-decoration: none;
             transition: all 0.3s;
-            border: none;
-            cursor: pointer;
+            display: inline-block;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .btn:hover::before {
-            width: 300px;
-            height: 300px;
+            letter-spacing: 1px;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #00ffff, #0066ff);
+            background: var(--cyan);
             color: #000;
-            box-shadow: 0 10px 40px rgba(0, 255, 255, 0.5);
         }
 
         .btn-primary:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 50px rgba(0, 255, 255, 0.7);
+            background: #00fff5;
+            box-shadow: 0 0 40px rgba(0, 255, 234, 0.5);
+            transform: translateY(-3px);
         }
 
         .btn-secondary {
+            border: 2px solid var(--cyan);
+            color: var(--cyan);
             background: transparent;
-            color: #00ffff;
-            border: 3px solid #00ffff;
         }
 
         .btn-secondary:hover {
-            background: rgba(0, 255, 255, 0.1);
-            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+            background: rgba(0, 255, 234, 0.1);
+            box-shadow: 0 0 25px rgba(0, 255, 234, 0.3);
         }
 
-        /* Features */
-        .features {
-            padding: 100px 0;
-            background: rgba(0, 20, 40, 0.3);
+        /* Section Title */
+        .section {
+            padding: 120px 5%;
+            max-width: 1600px;
+            margin: 0 auto;
         }
 
         .section-title {
-            font-family: 'Russo One', sans-serif;
-            font-size: 56px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
             text-align: center;
+            color: #fff;
             margin-bottom: 70px;
-            color: #00ffff;
-            text-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
-            position: relative;
-            display: inline-block;
-            width: 100%;
         }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, #00ffff, transparent);
-        }
-
+        /* Features */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
+            gap: 30px;
+            margin-top: 60px;
         }
 
         .feature-card {
-            background: rgba(0, 30, 60, 0.6);
-            border: 2px solid #00ffff;
-            border-radius: 20px;
-            padding: 40px;
+            background: var(--gray);
+            border: 1px solid #222;
+            border-radius: 16px;
+            padding: 45px 35px;
             transition: all 0.4s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.1), transparent);
-            transform: rotate(45deg);
-            transition: all 0.6s;
-        }
-
-        .feature-card:hover::before {
-            top: -100%;
-            left: -100%;
         }
 
         .feature-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 50px rgba(0, 255, 255, 0.4);
-            border-color: #0066ff;
+            border-color: var(--cyan);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 255, 234, 0.15);
         }
 
         .feature-icon {
-            font-size: 60px;
+            font-size: 48px;
             margin-bottom: 20px;
-            display: inline-block;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
         }
 
         .feature-card h3 {
-            font-family: 'Russo One', sans-serif;
-            font-size: 28px;
-            color: #00ffff;
+            font-size: 26px;
+            color: #fff;
             margin-bottom: 15px;
+            font-weight: 700;
         }
 
         .feature-card p {
-            font-size: 18px;
-            color: #bbb;
-            line-height: 1.8;
+            color: #999;
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 20px;
         }
 
         .feature-list {
             list-style: none;
-            margin-top: 20px;
         }
 
         .feature-list li {
-            padding: 10px 0;
-            color: #ddd;
-            font-size: 18px;
-            transition: all 0.3s;
-        }
-
-        .feature-list li:hover {
-            color: #00ffff;
-            padding-left: 10px;
+            color: #aaa;
+            padding: 8px 0;
+            font-size: 15px;
         }
 
         .feature-list li::before {
-            content: '→ ';
-            color: #00ffff;
+            content: "▸ ";
+            color: var(--cyan);
             font-weight: bold;
-            margin-right: 10px;
+            margin-right: 8px;
         }
 
         /* Pricing */
         .pricing {
-            padding: 100px 0;
+            background: #080808;
         }
 
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            max-width: 1400px;
-            margin: 0 auto;
+            gap: 25px;
+            margin-top: 60px;
         }
 
         .price-card {
-            background: linear-gradient(135deg, rgba(0, 30, 60, 0.8), rgba(0, 20, 40, 0.8));
-            border: 3px solid #00ffff;
-            border-radius: 20px;
-            padding: 40px 30px;
+            background: var(--gray);
+            border: 1px solid #222;
+            border-radius: 16px;
+            padding: 45px 30px;
             text-align: center;
             transition: all 0.4s;
             position: relative;
-            overflow: hidden;
-        }
-
-        .price-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(138, 43, 226, 0.1));
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-
-        .price-card:hover::before {
-            opacity: 1;
         }
 
         .price-card:hover {
-            transform: translateY(-15px) scale(1.05);
-            box-shadow: 0 25px 60px rgba(0, 255, 255, 0.5);
-            border-color: #8a2be2;
+            border-color: var(--cyan);
+            transform: translateY(-12px);
+            box-shadow: 0 25px 70px rgba(0, 255, 234, 0.2);
         }
 
         .price-card.featured {
-            border-color: #ffd700;
+            border-color: var(--cyan);
             transform: scale(1.05);
         }
 
-        .price-card.featured::after {
-            content: '🔥 ПОПУЛЯРНЫЙ';
+        .price-card.featured::before {
+            content: "ПОПУЛЯРНЫЙ";
             position: absolute;
-            top: 20px;
-            right: -35px;
-            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--cyan);
             color: #000;
-            padding: 5px 40px;
-            font-weight: 700;
-            font-size: 14px;
-            transform: rotate(45deg);
-            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.5);
+            padding: 6px 18px;
+            font-size: 12px;
+            font-weight: 900;
+            border-radius: 20px;
+            letter-spacing: 1px;
         }
 
         .price-duration {
-            font-family: 'Russo One', sans-serif;
-            font-size: 32px;
-            color: #00ffff;
-            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 15px;
         }
 
         .price-amount {
-            font-family: 'Russo One', sans-serif;
-            font-size: 48px;
-            color: #fff;
-            margin: 20px 0;
-        }
-
-        .price-amount span {
-            font-size: 28px;
-            color: #00ffff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--cyan);
+            margin: 20px 0 30px;
         }
 
         .price-features {
             list-style: none;
-            margin: 30px 0;
+            margin: 25px 0 30px;
             text-align: left;
         }
 
         .price-features li {
-            padding: 12px 0;
-            font-size: 16px;
-            color: #ddd;
-            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+            color: #aaa;
+            padding: 10px 0;
+            font-size: 15px;
+            border-bottom: 1px solid #1a1a1a;
         }
 
         .price-features li::before {
-            content: '✓ ';
-            color: #00ff00;
+            content: "✓ ";
+            color: #00ff6a;
             font-weight: bold;
-            font-size: 20px;
             margin-right: 10px;
         }
 
-        .price-btn {
-            width: 100%;
-            margin-top: 20px;
-        }
-
-        /* Info Section */
-        .info-section {
-            padding: 100px 0;
-            background: rgba(0, 20, 40, 0.3);
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .info-card {
-            background: rgba(0, 30, 60, 0.6);
-            border: 2px solid #00ffff;
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s;
-        }
-
-        .info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 255, 255, 0.3);
-        }
-
-        .info-icon {
-            font-size: 50px;
-            margin-bottom: 15px;
-        }
-
-        .info-card h3 {
-            font-family: 'Russo One', sans-serif;
-            font-size: 22px;
-            color: #00ffff;
-            margin-bottom: 10px;
-        }
-
-        .info-card p {
-            color: #bbb;
-            font-size: 16px;
-            line-height: 1.6;
-        }
-
         /* Contact */
-        .contact {
-            padding: 100px 0;
-        }
-
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
+            margin-top: 60px;
         }
 
         .contact-card {
-            background: rgba(0, 30, 60, 0.6);
-            border: 2px solid #00ffff;
-            border-radius: 20px;
+            background: var(--gray);
+            border: 1px solid #222;
+            border-radius: 16px;
             padding: 40px;
             text-align: center;
             transition: all 0.3s;
         }
 
         .contact-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0, 255, 255, 0.4);
+            border-color: var(--cyan);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px rgba(0, 255, 234, 0.15);
         }
 
         .contact-icon {
-            font-size: 50px;
+            font-size: 44px;
             margin-bottom: 20px;
         }
 
         .contact-card h3 {
-            font-family: 'Russo One', sans-serif;
-            font-size: 24px;
-            color: #00ffff;
-            margin-bottom: 15px;
+            font-size: 22px;
+            color: #fff;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .contact-card p {
+            color: #777;
+            font-size: 15px;
+            margin-bottom: 20px;
         }
 
         .contact-link {
             display: inline-block;
-            color: #fff;
+            color: var(--cyan);
             text-decoration: none;
-            font-size: 18px;
-            padding: 12px 30px;
-            background: rgba(0, 255, 255, 0.1);
-            border-radius: 10px;
-            margin-top: 15px;
+            font-size: 17px;
+            font-weight: 600;
+            padding: 12px 28px;
+            border: 1px solid var(--cyan);
+            border-radius: 8px;
             transition: all 0.3s;
-            border: 2px solid transparent;
         }
 
         .contact-link:hover {
-            background: rgba(0, 255, 255, 0.3);
-            color: #00ffff;
-            border-color: #00ffff;
+            background: rgba(0, 255, 234, 0.1);
+            box-shadow: 0 0 20px rgba(0, 255, 234, 0.3);
         }
 
         /* Footer */
         footer {
-            background: #000;
-            padding: 40px 0;
-            border-top: 3px solid #00ffff;
             text-align: center;
+            padding: 60px 5%;
+            background: #000;
+            border-top: 1px solid #1a1a1a;
         }
 
         .footer-logo {
-            font-family: 'Russo One', sans-serif;
-            font-size: 32px;
-            color: #00ffff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--cyan);
             margin-bottom: 20px;
         }
 
         footer p {
-            color: #777;
-            font-size: 16px;
-            margin: 10px 0;
+            color: #555;
+            font-size: 14px;
+            margin: 8px 0;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 48px;
-            }
-
-            .hero-subtitle {
-                font-size: 24px;
-            }
-
-            .section-title {
-                font-size: 36px;
-            }
-
-            .features-grid,
-            .contact-grid,
-            .pricing-grid {
+            .hero h1 { font-size: 56px; }
+            .section-title { font-size: 36px; }
+            .pricing-grid, .features-grid, .contact-grid {
                 grid-template-columns: 1fr;
             }
-
-            .cta-buttons {
-                flex-direction: column;
-            }
-
             .price-card.featured {
                 transform: scale(1);
-            }
-
-            .btn {
-                padding: 15px 30px;
-                font-size: 18px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="bg-video"></div>
-    <div class="grid-overlay"></div>
 
     <!-- Navigation -->
     <nav>
-        <div class="nav-content">
-            <div class="logo">💧 ABYSS</div>
-            <div class="status">
-                <div class="status-dot"></div>
-                <span class="status-text">НЕ ОБНАРУЖЕН 🟢</span>
-            </div>
+        <div class="logo">ABYSS</div>
+        <div class="status-badge">
+            <div class="status-dot"></div>
+            UNDETECTED
         </div>
     </nav>
 
     <!-- Hero -->
     <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>ABYSS</h1>
-                <div class="hero-subtitle">Приватный чит для PUBG Mobile</div>
-                <p class="hero-desc">Профессиональный инструмент для доминирования на поле боя.<br>Полный функционал. Максимальная безопасность. Регулярные обновления.</p>
-                <div class="cta-buttons">
-                    <a href="https://t.me/AbyssHacksBot" class="btn btn-primary" target="_blank">🤖 Купить сейчас</a>
-                    <a href="https://t.me/abysshacks" class="btn btn-secondary" target="_blank">📱 Telegram</a>
-                </div>
+        <div>
+            <h1>ABYSS</h1>
+            <p class="hero-subtitle">Приватный чит для PUBG Mobile<br>Полный функционал • Без Root • Не обнаружен</p>
+            <div class="cta-buttons">
+                <a href="https://t.me/AbyssHacksBot" class="btn btn-primary" target="_blank">Купить через бота</a>
+                <a href="https://t.me/abysshacks" class="btn btn-secondary" target="_blank">Telegram канал</a>
             </div>
         </div>
     </section>
 
     <!-- Features -->
-    <section class="features">
-        <div class="container">
-            <h2 class="section-title">Что внутри?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Aimbot Pro</h3>
-                    <p>Профессиональный прицеливание с гибкими настройками</p>
-                    <ul class="feature-list">
-                        <li>Настройка плавности прицеливания</li>
-                        <li>Выбор зоны поражения (голова, тело)</li>
-                        <li>Настраиваемый FOV</li>
-                        <li>Автошот при наведении</li>
-                    </ul>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">👁️</div>
-                    <h3>ESP Wallhack</h3>
-                    <p>Видение всего на карте через стены</p>
-                    <ul class="feature-list">
-                        <li>ESP на всех игроков</li>
-                        <li>Лут и оружие</li>
-                        <li>Транспорт и техника</li>
-                        <li>Расстояние и здоровье</li>
-                    </ul>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">⚙️</div>
-                    <h3>Misc функции</h3>
-                    <p>Дополнительные настройки для удобства</p>
-                    <ul class="feature-list">
-                        <li>Мини-радар на экране</li>
-                        <li>Кастомный прицел</li>
-                        <li>No Recoil (без отдачи)</li>
-                        <li>Speed Hack опции</li>
-                    </ul>
-                </div>
+    <section class="section">
+        <h2 class="section-title">Функционал</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Aimbot</h3>
+                <p>Профессиональное прицеливание с гибкими настройками</p>
+                <ul class="feature-list">
+                    <li>Настройка плавности</li>
+                    <li>Выбор зоны поражения</li>
+                    <li>Настраиваемый FOV</li>
+                    <li>Автошот</li>
+                </ul>
             </div>
-        </div>
-    </section>
 
-    <!-- Info Section -->
-    <section class="info-section">
-        <div class="container">
-            <h2 class="section-title">Преимущества ABYSS</h2>
-            <div class="info-grid">
-                <div class="info-card">
-                    <div class="info-icon">🛡️</div>
-                    <h3>Безопасность</h3>
-                    <p>Статус: Не обнаружен. Регулярные обновления защиты</p>
-                </div>
+            <div class="feature-card">
+                <div class="feature-icon">👁️</div>
+                <h3>ESP / Wallhack</h3>
+                <p>Видение всего на карте через стены</p>
+                <ul class="feature-list">
+                    <li>ESP на игроков</li>
+                    <li>Лут и оружие</li>
+                    <li>Транспорт</li>
+                    <li>Расстояние и HP</li>
+                </ul>
+            </div>
 
-                <div class="info-card">
-                    <div class="info-icon">📱</div>
-                    <h3>БЕЗ Root</h3>
-                    <p>Работает на всех Android устройствах без Root прав</p>
-                </div>
-
-                <div class="info-card">
-                    <div class="info-icon">⚡</div>
-                    <h3>Быстрая установка</h3>
-                    <p>Установка за 2 минуты, простая инструкция</p>
-                </div>
-
-                <div class="info-card">
-                    <div class="info-icon">🔄</div>
-                    <h3>Обновления</h3>
-                    <p>Актуальные обновления под новые версии игры</p>
-                </div>
-
-                <div class="info-card">
-                    <div class="info-icon">💬</div>
-                    <h3>Поддержка 24/7</h3>
-                    <p>Быстрая техподдержка в любое время</p>
-                </div>
-
-                <div class="info-card">
-                    <div class="info-icon">🎮</div>
-                    <h3>Все версии PUBGM</h3>
-                    <p>Поддержка Global, KR, VN и других версий</p>
-                </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚙️</div>
+                <h3>Misc функции</h3>
+                <p>Дополнительные настройки для комфорта</p>
+                <ul class="feature-list">
+                    <li>Радар на экране</li>
+                    <li>No Recoil</li>
+                    <li>Кастомный прицел</li>
+                    <li>И многое другое</li>
+                </ul>
             </div>
         </div>
     </section>
 
     <!-- Pricing -->
-    <section class="pricing">
-        <div class="container">
-            <h2 class="section-title">Тарифы и цены</h2>
-            <div class="pricing-grid">
-                <div class="price-card">
-                    <div class="price-duration">1 День</div>
-                    <div class="price-amount">180 <span>₽</span></div>
-                    <ul class="price-features">
-                        <li>Полный доступ</li>
-                        <li>Все функции</li>
-                        <li>Техподдержка</li>
-                    </ul>
-                    <a href="https://t.me/AbyssHacksBot" class="btn btn-primary price-btn" target="_blank">Купить</a>
-                </div>
+    <section class="section pricing">
+        <h2 class="section-title">Цены</h2>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <div class="price-duration">1 День</div>
+                <div class="price-amount">180₽</div>
+                <ul class="price-features">
+                    <li>Все функции</li>
+                    <li>Без Root</li>
+                    <li>Техподдержка</li>
+                </ul>
+                <a href="https://t.me/AbyssHacksBot" class="btn btn-primary" target="_blank">Купить</a>
+            </div>
 
-                <div class="price-card">
-                    <div class="price-duration">3 Дня</div>
-                    <div class="price-amount">380 <span>₽</span></div>
-                    <ul class="price-features">
-                        <li>Полный доступ</li>
-                        <li>Все функции</li>
-                        <li>Техподдержка</li>
-                        <li>Экономия 12%</li>
-                    </ul>
-                    <a href="https://t.me/AbyssHacksBot" class="btn btn-primary price-btn" target="_blank">Купить</a>
-                </div>
+            <div class="price-card">
+                <div class="price-duration">3 Дня</div>
+                <div class="price-amount">380₽</div>
+                <ul class="price-features">
+                    <li>Все функции</li>
+                    <li>Без Root</li>
+                    <li>Техподдержка</li>
+                </ul>
+                <a href="https://t.me/AbyssHacksBot" class="btn btn-primary" target="_blank">Купить</a>
+            </div>
 
-                <div class="price-card featured">
-                    <div class="price-duration">7 Дней</div>
-                    <div class="price-amount">700 <span>₽</span></div>
-                    <ul class="price-features">
-                        <li>Полный доступ</li>
-                        <li>Все функции</li>
-                        <li>Приоритет поддержки</li>
-                        <li>Экономия 20%</li>
-                    </ul>
-                    <a href="https://t.me/AbyssHacksBot" class="btn btn-primary price-btn" target="_blank">Купить</a>
-                </div>
+            <div class="price-card featured">
+                <div class="price-duration">7 Дней</div>
+                <div class="price-amount">700₽</div>
+                <ul class="price-features">
+                    <li>Все функции</li>
+                    <li>Без Root</li>
+                    <li>Приоритет поддержки</li>
+                </ul>
+                <a href="https://t.me/AbyssHacksBot" class="btn btn-primary" target="_blank">Купить</a>
+            </div>
 
-                <div class="price-card">
-                    <div class="price-duration">14 Дней</div>
-                    <div class="price-amount">1 000 <span>₽</span></div>
-                    <ul class="price-features">
-                        <li>Полный доступ</li>
-                        <li>Все функции</li>
-                        <li>Приоритет поддержки</li>
-                        <li>Экономия 30%</li>
-                    </ul>
-                    <a href="https://t.me/AbyssHacksBot" class="btn btn-primary price-btn" target="_blank">Купить</a>
-                </div>
+            <div class="price-card">
+                <div class="price-duration">14 Дней</div>
+                <div class="price-amount">1 000₽</div>
+                <ul class="price-features">
+                    <li>Все функции</li>
+                    <li>Без Root</li>
+                    <li>VIP поддержка</li>
+                </ul>
+                <a href="https://t.me/AbyssHacksBot" class="btn btn-primary" target="_blank">Купить</a>
+            </div>
 
-                <div class="price-card">
-                    <div class="price-duration">30 Дней</div>
-                    <div class="price-amount">1 500 <span>₽</span></div>
-                    <ul class="price-features">
-                        <li>Полный доступ</li>
-                        <li>Все функции</li>
-                        <li>VIP поддержка</li>
-                        <li>Экономия 45%</li>
-                        <li>Бонусы в Discord</li>
-                    </ul>
-                    <a href="https://t.me/AbyssHacksBot" class="btn btn-primary price-btn" target="_blank">Купить</a>
-                </div>
+            <div class="price-card">
+                <div class="price-duration">30 Дней</div>
+                <div class="price-amount">1 500₽</div>
+                <ul class="price-features">
+                    <li>Все функции</li>
+                    <li>Без Root</li>
+                    <li>VIP поддержка</li>
+                    <li>Discord бонусы</li>
+                </ul>
+                <a href="https://t.me/AbyssHacksBot" class="btn btn-primary" target="_blank">Купить</a>
+            </div>
 
-                <div class="price-card">
-                    <div class="price-duration">60 Дней</div>
-                    <div class="price-amount">2 000 <span>₽</span></div>
-                    <ul class="price-features">
-                        <li>Полный доступ</li>
-                        <li>Все функции</li>
-                        <li>VIP поддержка</li>
-                        <li>Экономия 60%</li>
-                        <li>Все бонусы</li>
-                        <li>Ранний доступ к новинкам</li>
-                    </ul>
-                    <a href="https://t.me/AbyssHacksBot" class="btn btn-primary price-btn" target="_blank">Купить</a>
-                </div>
+            <div class="price-card">
+                <div class="price-duration">60 Дней</div>
+                <div class="price-amount">2 000₽</div>
+                <ul class="price-features">
+                    <li>Все функции</li>
+                    <li>Без Root</li>
+                    <li>VIP поддержка</li>
+                    <li>Все бонусы</li>
+                    <li>Ранний доступ</li>
+                </ul>
+                <a href="https://t.me/AbyssHacksBot" class="btn btn-primary" target="_blank">Купить</a>
             </div>
         </div>
     </section>
 
     <!-- Contact -->
-    <section class="contact">
-        <div class="container">
-            <h2 class="section-title">Контакты и поддержка</h2>
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <div class="contact-icon">🤖</div>
-                    <h3>Купить</h3>
-                    <p>Автоматическая покупка через бота</p>
-                    <a href="https://t.me/AbyssHacksBot" class="contact-link" target="_blank">@AbyssHacksBot</a>
-                </div>
+    <section class="section">
+        <h2 class="section-title">Контакты</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">🤖</div>
+                <h3>Купить</h3>
+                <p>Автоматическая покупка</p>
+                <a href="https://t.me/AbyssHacksBot" class="contact-link" target="_blank">@AbyssHacksBot</a>
+            </div>
 
-                <div class="contact-card">
-                    <div class="contact-icon">📢</div>
-                    <h3>Новости</h3>
-                    <p>Обновления и новости проекта</p>
-                    <a href="https://t.me/abysshacks" class="contact-link" target="_blank">@abysshacks</a>
-                </div>
+            <div class="contact-card">
+                <div class="contact-icon">📢</div>
+                <h3>Новости</h3>
+                <p>Обновления проекта</p>
+                <a href="https://t.me/abysshacks" class="contact-link" target="_blank">@abysshacks</a>
+            </div>
 
-                <div class="contact-card">
-                    <div class="contact-icon">💬</div>
-                    <h3>Чат</h3>
-                    <p>Общение с другими пользователями</p>
-                    <a href="https://t.me/abysshackschat" class="contact-link" target="_blank">@abysshackschat</a>
-                </div>
+            <div class="contact-card">
+                <div class="contact-icon">💬</div>
+                <h3>Чат</h3>
+                <p>Общение пользователей</p>
+                <a href="https://t.me/abysshackschat" class="contact-link" target="_blank">@abysshackschat</a>
+            </div>
 
-                <div class="contact-card">
-                    <div class="contact-icon">🎮</div>
-                    <h3>Discord</h3>
-                    <p>Discord сервер проекта</p>
-                    <a href="https://discord.gg/RgMNArJw2J" class="contact-link" target="_blank">Присоединиться</a>
-                </div>
+            <div class="contact-card">
+                <div class="contact-icon">🎮</div>
+                <h3>Discord</h3>
+                <p>Discord сервер</p>
+                <a href="https://discord.gg/RgMNArJw2J" class="contact-link" target="_blank">Присоединиться</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-logo">💧 ABYSS</div>
-            <p>© 2024 Abyss Hacks. Приватный чит для PUBG Mobile</p>
-            <p style="margin-top: 10px; font-size: 14px;">Используйте на свой страх и риск. Мы не несем ответственности за блокировки аккаунтов.</p>
-            <p style="margin-top: 15px; font-size: 13px; color: #555;">Все торговые марки являются собственностью соответствующих владельцев.</p>
-        </div>
+        <div class="footer-logo">ABYSS</div>
+        <p>© 2024 Abyss Hacks. Приватный чит для PUBG Mobile</p>
+        <p>Используйте на свой страх и риск. Мы не несем ответственности за блокировки.</p>
     </footer>
+
 </body>
 </html>
